@@ -167,6 +167,22 @@
   .err .fix{display:block;margin-top:9px;font-size:.86rem;color:var(--good);}
   .err .fix b{color:var(--good);font-weight:700;}
 
+  /* ── GALERIA DE VÍDEOS ── */
+  .vgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:20px;margin-top:30px;}
+  .vcard{border:1px solid var(--line-2);border-radius:18px;overflow:hidden;background:var(--paper-2);display:flex;flex-direction:column;}
+  .vwrap{position:relative;aspect-ratio:9/16;background:#0E1116;}
+  .vwrap video{width:100%;height:100%;object-fit:contain;display:block;background:#0E1116;}
+  .vwrap .badge{position:absolute;top:10px;left:10px;z-index:3;font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:5px 9px;border-radius:20px;background:rgba(14,17,22,.82);color:#fff;backdrop-filter:blur(4px);pointer-events:none;}
+  .vwrap .badge.h{background:rgba(199,55,31,.9);}
+  .vcard .vb{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1;}
+  .vcard .fn{font-family:var(--mono);font-size:.62rem;letter-spacing:.11em;text-transform:uppercase;font-weight:700;color:var(--accent);}
+  .vcard h4{font-family:var(--disp);font-weight:700;font-size:1.02rem;margin-top:7px;line-height:1.2;}
+  .vcard .meta{font-family:var(--mono);font-size:.68rem;color:var(--ink-soft);margin-top:6px;}
+  .vcard p{font-size:.85rem;color:var(--ink-2);margin-top:9px;}
+  .vcard p b{color:var(--ink);font-weight:600;}
+  .vcard .look{margin-top:auto;padding-top:12px;font-size:.82rem;color:var(--ink-2);border-top:1px solid var(--line);margin-top:12px;}
+  .vcard .look b{color:var(--accent-deep);font-weight:700;}
+
   .chk{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:28px;}
   .ck{padding:20px 22px;border-radius:16px;background:var(--paper-2);border:1px solid var(--line-2);border-top:3px solid var(--pc,var(--accent));}
   .ck .lab{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--pc,var(--accent));margin-bottom:9px;}
@@ -205,11 +221,11 @@
   <div class="wrap">
     <span class="eyebrow">Guia + plano de execução · Cardô Marketing</span>
     <h1 class="disp">Anúncio de imóvel<span class="l2">que funciona.</span></h1>
-    <p class="thesis">Este documento existe para uma coisa: <b>alinhar o que é um bom anúncio de imóvel antes de gastar o primeiro real de mídia.</b> Ele parte de anúncios reais que já rodaram no mercado — do apartamento de R$ 220 mil à cobertura duplex no Leblon — mostra o que faz cada um funcionar, o que faz outros queimarem verba, e termina no que precisamos de vocês para produzir os nossos.</p>
+    <p class="thesis">Este documento existe para uma coisa: <b>alinhar o que é um bom anúncio de imóvel antes de gastar o primeiro real de mídia.</b> Ele parte de anúncios reais que já rodaram no mercado — imagem e vídeo, do apartamento de R$ 220 mil à cobertura duplex no Leblon — mostra o que faz cada um funcionar, o que faz outros queimarem verba, e termina no que precisamos de vocês para produzir os nossos.</p>
     <div class="glance">
-      <div class="g"><div class="k">Referências</div><div class="n pl">19</div><div class="d">anúncios reais analisados</div></div>
+      <div class="g"><div class="k">Referências</div><div class="n pl">29</div><div class="d">anúncios reais analisados</div></div>
       <div class="g"><div class="k">Segmentos</div><div class="n">3</div><div class="d">econômico · médio · alto</div></div>
-      <div class="g"><div class="k">Formatos de vídeo</div><div class="n">8</div><div class="d">cada um com uma função</div></div>
+      <div class="g"><div class="k">Vídeos</div><div class="n">10</div><div class="d">um por função, comentados</div></div>
       <div class="g"><div class="k">A mecânica</div><div class="n">1</div><div class="d">só muda a variável do meio</div></div>
     </div>
   </div>
@@ -283,7 +299,7 @@
     <div class="shead">
       <div class="rn">II</div>
       <h2 class="disp">A mecânica é sempre a mesma. Só muda a variável do meio.</h2>
-      <p>Olhando os 19 anúncios lado a lado, do apartamento de R$ 220 mil à cobertura duplex no Leblon, aparece a mesma estrutura de três camadas. <b>O que separa o segmento econômico do alto padrão não é a mecânica — é qual informação ocupa o centro da peça.</b></p>
+      <p>Olhando os anúncios lado a lado, do apartamento de R$ 220 mil à cobertura duplex no Leblon, aparece a mesma estrutura de três camadas. <b>O que separa o segmento econômico do alto padrão não é a mecânica — é qual informação ocupa o centro da peça.</b></p>
     </div>
 
     <div class="anat">
@@ -502,9 +518,127 @@
   <div class="wrap reveal">
     <div class="shead">
       <div class="rn">V</div>
-      <h2 class="disp">Vídeo: oito formatos, oito funções.</h2>
+      <h2 class="disp">Vídeo: cada formato resolve uma objeção diferente.</h2>
       <p>A pasta de referência já está organizada exatamente do jeito certo — cada vídeo nomeado pela <b>função</b>, não pelo imóvel. É assim que se monta biblioteca de criativo: o mesmo imóvel rende seis vídeos diferentes se cada um resolver uma objeção diferente.</p>
     </div>
+
+    <p class="body">Abaixo, <b>dez anúncios em vídeo que rodaram de verdade</b> — de incorporadora, de imobiliária e de corretor autônomo. Dá play em cada um e leia o que está embaixo: em todos, o que faz o vídeo funcionar é uma decisão simples que dá para copiar amanhã.</p>
+
+    <div class="vgrid">
+
+      <div class="vcard">
+        <div class="vwrap"><span class="badge">9:16</span><video controls preload="none" playsinline poster="vid/01-humanizado.jpg"><source src="vid/01-humanizado.mp4" type="video/mp4"></video></div>
+        <div class="vb">
+          <span class="fn">Humanizado</span>
+          <h4 class="disp">O corretor mostra o que tem por perto</h4>
+          <div class="meta">30s · vertical · @siximoveis</div>
+          <p>Ele anda pela cidade — praia, mercado, calçada, restaurante — e cada trecho ganha uma legenda grande na tela. Fecha com <b>"30% abaixo do valor de mercado"</b> e o telefone do time.</p>
+          <div class="look"><b>Repare:</b> ele quase não mostra o apartamento. O produto aqui é o <b>bairro</b> — e é o argumento mais fácil de gravar, porque não depende de imóvel pronto.</div>
+        </div>
+      </div>
+
+      <div class="vcard">
+        <div class="vwrap"><span class="badge">9:16</span><video controls preload="none" playsinline poster="vid/02-animacao.jpg"><source src="vid/02-animacao.mp4" type="video/mp4"></video></div>
+        <div class="vb">
+          <span class="fn">Animação 3D</span>
+          <h4 class="disp">O imóvel que ainda não existe</h4>
+          <div class="meta">61s · vertical · @daxo.incorporadora</div>
+          <p>Perspectivas 3D encadeadas, com um dado técnico por cena: <b>"198m² privativos, 3 ou 4 suítes sendo 1 master, 3 vagas"</b>, <b>"1.200m² de lazer com mais de 10 ambientes"</b>. CTA "Cadastre-se".</p>
+          <div class="look"><b>Repare no final:</b> o formulário pergunta <b>"como você prefere conversar — WhatsApp, ligação ou e-mail?"</b>. Uma pergunta só, e o corretor já liga do jeito certo.</div>
+        </div>
+      </div>
+
+      <div class="vcard">
+        <div class="vwrap"><span class="badge">9:16</span><video controls preload="none" playsinline poster="vid/03-intercalado.jpg"><source src="vid/03-intercalado.mp4" type="video/mp4"></video></div>
+        <div class="vb">
+          <span class="fn">Humanizado + animação</span>
+          <h4 class="disp">Imagem aérea abre, pessoa explica</h4>
+          <div class="meta">32s · vertical · @criimoveis</div>
+          <p>Começa com drone sobre a orla e <b>"A partir de R$ 3.149.000,00"</b> na tela. Corta para uma pessoa falando com a câmera, com uma palavra-chave em destaque a cada frase: <b>localização</b>, <b>15%</b>, <b>especialistas</b>, <b>parcelamento em 120x</b>.</p>
+          <div class="look"><b>Repare:</b> o preço milionário aparece logo nos primeiros segundos. Em ticket alto o preço não é oferta — é <b>filtro</b>. E o formulário abre avisando <b>"não trabalhamos com aluguel, apenas vendas"</b>, cortando o lead errado antes dele virar lead.</div>
+        </div>
+      </div>
+
+      <div class="vcard">
+        <div class="vwrap"><span class="badge">9:16</span><video controls preload="none" playsinline poster="vid/04-legenda.jpg"><source src="vid/04-legenda.mp4" type="video/mp4"></video></div>
+        <div class="vb">
+          <span class="fn">Tour com legenda por cômodo</span>
+          <h4 class="disp">O tour que funciona no mudo</h4>
+          <div class="meta">44s · vertical · casa em Arniqueiras</div>
+          <p>Celular na mão, andando devagar, uma legenda por ambiente: <b>"casa moderna com lazer em Arniqueiras"</b>, <b>"5 banheiros ao todo"</b>, <b>"garagem coberta para 2 carros"</b>, <b>"varanda"</b>, <b>"churrasqueira e piscina"</b>.</p>
+          <div class="look"><b>Repare:</b> não tem narração nenhuma. A maioria assiste <b>sem som</b> — e aqui a informação chega inteira mesmo mudo. É o formato mais barato de produzir da lista.</div>
+        </div>
+      </div>
+
+      <div class="vcard">
+        <div class="vwrap"><span class="badge h">16:9 · horizontal</span><video controls preload="none" playsinline poster="vid/05-drone.jpg"><source src="vid/05-drone.mp4" type="video/mp4"></video></div>
+        <div class="vb">
+          <span class="fn">Tour com drone</span>
+          <h4 class="disp">Abre no alto e resolve a localização</h4>
+          <div class="meta">60s (cortado de 2min) · horizontal</div>
+          <p>Imagem aérea do bairro inteiro antes de entrar na casa — responde "onde fica" sem escrever uma palavra. Depois, legenda por cômodo: <b>"280m² de área útil"</b>, <b>"acabamento de primeira qualidade"</b>, <b>"cozinha ampla"</b>.</p>
+          <div class="look"><b>É o único horizontal do conjunto — e serve de contraexemplo.</b> No feed do celular ele aparece pequeno, com tarja preta em cima e embaixo, e perde para qualquer vertical ao lado. Mesmo conteúdo, gravado em pé, renderia muito mais.</div>
+        </div>
+      </div>
+
+      <div class="vcard">
+        <div class="vwrap"><span class="badge">vertical</span><video controls preload="none" playsinline poster="vid/06-pagamento.jpg"><source src="vid/06-pagamento.mp4" type="video/mp4"></video></div>
+        <div class="vb">
+          <span class="fn">Condição de pagamento</span>
+          <h4 class="disp">A oferta fixa na tela o vídeo inteiro</h4>
+          <div class="meta">61s · vertical · @vitaliinvestimentos</div>
+          <p>Tour por uma casa de alto padrão — elevador interno, piscina, closet — e, por cima de tudo, do primeiro ao último segundo: <b>"ACEITA PERMUTA — ATÉ R$ 2.000.000,00"</b>.</p>
+          <div class="look"><b>O melhor truque da lista, e o mais fácil de copiar.</b> A oferta nunca sai da tela: não importa em que segundo a pessoa começou a assistir, ela vê a condição. Vale para qualquer imóvel — "aceita FGTS", "entrada em 12x", "aceita permuta".</div>
+        </div>
+      </div>
+
+      <div class="vcard">
+        <div class="vwrap"><span class="badge">9:16</span><video controls preload="none" playsinline poster="vid/07-tour50s.jpg"><source src="vid/07-tour50s.mp4" type="video/mp4"></video></div>
+        <div class="vb">
+          <span class="fn">Tour em 50 segundos</span>
+          <h4 class="disp">Ficha técnica na abertura, tour depois</h4>
+          <div class="meta">50s · vertical · Itaim Bibi, SP</div>
+          <p>Abre com a cartela do empreendimento e a ficha na tela — <b>"191m², 3 suítes, vista panorâmica, varanda gourmet"</b> — junto da promessa <b>"metros quadrados em 50 segundos"</b>. Só depois o corretor percorre o apartamento.</p>
+          <div class="look"><b>Repare na promessa de tempo logo no início.</b> "Em 50 segundos" é um contrato com quem está assistindo — dá um motivo para ficar, em vez de torcer para que fique.</div>
+        </div>
+      </div>
+
+      <div class="vcard">
+        <div class="vwrap"><span class="badge">vertical</span><video controls preload="none" playsinline poster="vid/08-corretores.jpg"><source src="vid/08-corretores.mp4" type="video/mp4"></video></div>
+        <div class="vb">
+          <span class="fn">Time de corretores</span>
+          <h4 class="disp">Dois corretores, uma casa</h4>
+          <div class="meta">60s (cortado de 1min43) · vertical</div>
+          <p>Um corretor abre na entrada, o drone mostra o condomínio, e uma segunda corretora assume nos ambientes internos. Legendas: <b>"um dos condomínios mais deslumbrantes"</b>, <b>"100% mobiliada"</b>, <b>"ambientes pensados para você"</b>.</p>
+          <div class="look"><b>Faz duas coisas ao mesmo tempo:</b> vende a casa e mostra que a imobiliária tem <b>time</b>. É o formato que também atrai proprietário querendo colocar imóvel na carteira — a outra ponta do negócio.</div>
+        </div>
+      </div>
+
+      <div class="vcard">
+        <div class="vwrap"><span class="badge">vertical</span><video controls preload="none" playsinline poster="vid/09-conceitual.jpg"><source src="vid/09-conceitual.mp4" type="video/mp4"></video></div>
+        <div class="vb">
+          <span class="fn">Conceitual · alto padrão</span>
+          <h4 class="disp">Vende o estilo de vida, não a planta</h4>
+          <div class="meta">63s · vertical · Faria Lima, SP</div>
+          <p>Quase não mostra o imóvel inteiro — mostra detalhes: um livro da Rolex na estante, o tênis, o blazer, a luz rasante. As poucas informações vêm em texto curto: <b>"3 confortáveis suítes"</b>, <b>"closet"</b>, <b>"conheça essa exclusividade"</b>.</p>
+          <div class="look"><b>Repare que o público é definido pelos objetos</b>, não por uma frase dizendo "para o público de alto padrão". Quem é daquele mundo se reconhece; quem não é, passa. É qualificação por estética.</div>
+        </div>
+      </div>
+
+      <div class="vcard">
+        <div class="vwrap"><span class="badge">vertical</span><video controls preload="none" playsinline poster="vid/10-localizacao.jpg"><source src="vid/10-localizacao.mp4" type="video/mp4"></video></div>
+        <div class="vb">
+          <span class="fn">Localização · alto padrão</span>
+          <h4 class="disp">O endereço é o produto</h4>
+          <div class="meta">60s (cortado de 1min17) · vertical</div>
+          <p>Abre com <b>"ao lado da Faria Lima"</b> e o argumento do centro financeiro. Depois percorre salão, academia, área verde, piscina, cozinha americana, lavanderia embutida, luminosidade natural — um atributo por corte.</p>
+          <div class="look"><b>Cuidado com uma frase dele:</b> "valorização garantida". Garantir valorização é promessa que não se pode cumprir e que gera dor de cabeça. O mesmo argumento fica seguro assim: <b>"a região que mais valorizou nos últimos 5 anos"</b> — com o dado na mão.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="body" style="margin-top:36px">Resumo dos formatos e de onde cada um entra no funil — do público que nunca ouviu falar de vocês até quem já visitou o imóvel:</p>
 
     <div class="tscroll">
     <table class="t">
