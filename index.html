@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anúncio de Imóvel que Funciona · Cardô</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme:light;
+    --paper:#F4F1EA; --paper-2:#FBFAF6; --paper-3:#EFEBE2;
+    --ink:#1B1620; --ink-2:#3B3340; --ink-soft:#6A6072; --line:#E3DCD0; --line-2:#D5CCBD;
+    --plum:#7A1FA2; --plum-deep:#5A1478; --plum-wash:#F1E7F5;
+    --coral:#FF4D6D; --gold:#C08A1E;
+    --good:#1C8A54; --bad:#C7371F;
+    --sans:'Inter',system-ui,sans-serif; --disp:'Bricolage Grotesque',sans-serif; --mono:'JetBrains Mono',monospace;
+    --mw:1160px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;font-size:112%;}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:1rem;line-height:1.62;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:var(--mw);margin:0 auto;padding:0 26px;}
+  .disp{font-family:var(--disp);font-weight:800;letter-spacing:-.02em;line-height:1.02;text-wrap:balance;}
+  .eyebrow{font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--plum);}
+  a{color:inherit;}
+  ::selection{background:var(--plum);color:#fff;}
+  :focus-visible{outline:2px solid var(--plum);outline-offset:3px;border-radius:4px;}
+
+  .hero{position:relative;padding:84px 0 60px;border-bottom:1px solid var(--line);overflow:hidden;}
+  .hero::before{content:"";position:absolute;top:-160px;right:-140px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(122,31,162,.10),transparent 68%);pointer-events:none;}
+  .hero .eyebrow{margin-bottom:20px;display:inline-block;}
+  .hero h1{font-size:clamp(2.7rem,7.6vw,5.4rem);}
+  .hero h1 .l2{display:block;color:var(--plum);position:relative;}
+  .hero h1 .l2::after{content:"";position:absolute;left:2px;bottom:.07em;width:.4em;height:.1em;background:var(--coral);border-radius:2px;}
+  .hero .thesis{max-width:58ch;margin-top:26px;font-size:1.1rem;color:var(--ink-2);}
+  .hero .thesis b{color:var(--ink);font-weight:600;}
+  .glance{display:flex;flex-wrap:wrap;gap:0;margin-top:42px;border:1px solid var(--line-2);border-radius:16px;overflow:hidden;background:var(--paper-2);}
+  .glance .g{flex:1 1 150px;padding:18px 22px;border-right:1px solid var(--line);}
+  .glance .g:last-child{border-right:none;}
+  .glance .k{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);}
+  .glance .n{font-family:var(--disp);font-weight:800;font-size:1.9rem;margin-top:5px;font-variant-numeric:tabular-nums;}
+  .glance .d{font-size:.78rem;color:var(--ink-soft);margin-top:1px;}
+  .glance .n.pl{color:var(--plum);}
+
+  .nav{position:sticky;top:0;z-index:20;background:rgba(244,241,234,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  .nav .inner{max-width:var(--mw);margin:0 auto;padding:11px 26px;display:flex;gap:5px;flex-wrap:wrap;align-items:center;}
+  .nav .brand{font-family:var(--disp);font-weight:800;font-size:.95rem;margin-right:auto;letter-spacing:-.01em;}
+  .nav a{font-size:.8rem;font-weight:500;text-decoration:none;color:var(--ink-2);padding:6px 11px;border-radius:20px;transition:.15s;}
+  .nav a:hover{background:var(--plum-wash);color:var(--plum);}
+
+  section{padding:72px 0;border-bottom:1px solid var(--line);}
+  .shead{max-width:680px;margin-bottom:38px;}
+  .shead .rn{font-family:var(--mono);font-size:.78rem;color:var(--plum);letter-spacing:.1em;}
+  .shead h2{font-family:var(--disp);font-weight:800;font-size:clamp(1.9rem,4.2vw,2.9rem);margin-top:10px;}
+  .shead p{margin-top:14px;font-size:1.02rem;color:var(--ink-2);}
+  .shead p b{color:var(--ink);font-weight:600;}
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.6,.2,1),transform .7s cubic-bezier(.2,.6,.2,1);}
+  .reveal.in{opacity:1;transform:none;}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}}
+
+  p.body{max-width:74ch;margin-top:16px;color:var(--ink-2);}
+  p.body b{color:var(--ink);font-weight:600;}
+
+  .callouts{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px;}
+  @media(max-width:680px){.callouts{grid-template-columns:1fr;}}
+  .call{padding:20px 22px;border-radius:16px;border:1px solid var(--line-2);background:var(--paper-2);}
+  .call .tag{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;}
+  .call.good{border-color:rgba(28,138,84,.35);background:#F0F6F1;} .call.good .tag{color:var(--good);}
+  .call.warn{border-color:rgba(199,55,31,.32);background:#FBF0EE;} .call.warn .tag{color:var(--bad);}
+  .call p{margin-top:8px;font-size:.93rem;color:var(--ink-2);} .call p b{color:var(--ink);font-weight:600;}
+
+  .steps{display:grid;gap:14px;margin-top:26px;}
+  .step{display:grid;grid-template-columns:56px 1fr;gap:20px;align-items:start;padding:22px 24px;border:1px solid var(--line-2);border-radius:16px;background:var(--paper-2);position:relative;overflow:hidden;}
+  .step .sq{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;font-family:var(--disp);font-weight:800;font-size:1.15rem;color:#fff;}
+  .step h4{font-family:var(--disp);font-weight:700;font-size:1.12rem;}
+  .step p{font-size:.93rem;color:var(--ink-2);margin-top:6px;max-width:70ch;}
+  .step p b{color:var(--ink);font-weight:600;}
+  .step .ghost{position:absolute;right:14px;top:-14px;font-family:var(--disp);font-weight:800;font-size:5.4rem;color:var(--paper-3);z-index:0;line-height:1;}
+  .step > *{position:relative;z-index:1;}
+  @media(max-width:600px){.step{grid-template-columns:1fr;gap:12px;}}
+
+  table.t{width:100%;border-collapse:collapse;margin-top:26px;border:1px solid var(--line-2);border-radius:16px;overflow:hidden;background:var(--paper-2);}
+  table.t th{font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);text-align:left;padding:13px 18px;background:var(--paper-3);border-bottom:1px solid var(--line-2);}
+  table.t td{padding:15px 18px;border-bottom:1px solid var(--line);font-size:.92rem;color:var(--ink-2);vertical-align:top;}
+  table.t tr:last-child td{border-bottom:none;}
+  table.t td b{color:var(--ink);font-weight:600;}
+  table.t td.seg{font-family:var(--disp);font-weight:700;color:var(--ink);font-size:1rem;white-space:nowrap;}
+  .tscroll{overflow-x:auto;}
+
+  .refs{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:20px;margin-top:30px;}
+  .ref{border:1px solid var(--line-2);border-radius:18px;overflow:hidden;background:var(--paper-2);display:flex;flex-direction:column;}
+  .ref .shot{background:var(--paper-3);display:block;}
+  .ref .shot img{width:100%;display:block;}
+  .ref .body{padding:18px 20px 20px;}
+  .ref .verd{font-family:var(--mono);font-size:.64rem;letter-spacing:.11em;text-transform:uppercase;font-weight:700;display:inline-block;padding:4px 9px;border-radius:20px;}
+  .ref .verd.ok{background:#E6F4EC;color:var(--good);}
+  .ref .verd.no{background:#FAE7E3;color:var(--bad);}
+  .ref h4{font-family:var(--disp);font-weight:700;font-size:1.05rem;margin-top:11px;}
+  .ref p{font-size:.88rem;color:var(--ink-2);margin-top:7px;}
+  .ref p b{color:var(--ink);font-weight:600;}
+  .ref ul{margin:9px 0 0 17px;font-size:.86rem;color:var(--ink-2);}
+  .ref ul li{margin-top:5px;}
+  .ref ul li b{color:var(--ink);font-weight:600;}
+  .ref.big{grid-column:1/-1;}
+  .ref.big .inner{display:grid;grid-template-columns:minmax(0,330px) 1fr;gap:0;align-items:start;}
+  .ref.big .body{padding:26px 30px;}
+  @media(max-width:760px){.ref.big .inner{grid-template-columns:1fr;}}
+
+  .vs{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:30px;}
+  @media(max-width:760px){.vs{grid-template-columns:1fr;}}
+
+  .anat{border:1px solid var(--line-2);border-radius:18px;background:var(--paper-2);padding:26px 28px;margin-top:28px;}
+  .anat h4{font-family:var(--disp);font-weight:800;font-size:1.15rem;}
+  .anat ol{margin:16px 0 0 0;list-style:none;counter-reset:a;}
+  .anat ol li{counter-increment:a;padding:12px 0 12px 46px;border-bottom:1px solid var(--line);position:relative;font-size:.94rem;color:var(--ink-2);}
+  .anat ol li:last-child{border-bottom:none;}
+  .anat ol li::before{content:counter(a);position:absolute;left:0;top:12px;width:28px;height:28px;border-radius:9px;background:var(--plum-wash);color:var(--plum);font-family:var(--mono);font-weight:700;font-size:.78rem;display:grid;place-items:center;}
+  .anat ol li b{color:var(--ink);font-weight:600;}
+  .anat ol li .ex{display:block;font-family:var(--mono);font-size:.76rem;color:var(--plum-deep);margin-top:5px;line-height:1.5;}
+
+  .errs{display:grid;gap:0;margin-top:28px;border:1px solid var(--line-2);border-radius:18px;overflow:hidden;background:var(--paper-2);}
+  .err{display:grid;grid-template-columns:46px 1fr;gap:18px;padding:20px 24px;border-bottom:1px solid var(--line);align-items:start;}
+  .err:last-child{border-bottom:none;}
+  .err .x{width:30px;height:30px;border-radius:50%;background:#FAE7E3;color:var(--bad);display:grid;place-items:center;font-weight:700;font-size:.95rem;font-family:var(--mono);}
+  .err h4{font-family:var(--disp);font-weight:700;font-size:1.05rem;}
+  .err p{font-size:.9rem;color:var(--ink-2);margin-top:5px;max-width:72ch;}
+  .err p b{color:var(--ink);font-weight:600;}
+  .err .fix{display:block;margin-top:9px;font-size:.86rem;color:var(--good);}
+  .err .fix b{color:var(--good);font-weight:700;}
+
+  .chk{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:28px;}
+  .ck{padding:20px 22px;border-radius:16px;background:var(--paper-2);border:1px solid var(--line-2);border-top:3px solid var(--pc,var(--plum));}
+  .ck .lab{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--pc,var(--plum));margin-bottom:9px;}
+  .ck h4{font-family:var(--disp);font-weight:700;font-size:1.05rem;}
+  .ck ul{margin:10px 0 0 16px;font-size:.87rem;color:var(--ink-2);}
+  .ck ul li{margin-top:6px;}
+  .ck ul li b{color:var(--ink);font-weight:600;}
+
+  .note{margin-top:26px;padding:18px 22px;border-left:3px solid var(--gold);background:#F8F2E4;border-radius:0 12px 12px 0;font-size:.92rem;color:var(--ink-2);max-width:78ch;}
+  .note b{color:var(--ink);font-weight:600;}
+  .note .lab{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700;display:block;margin-bottom:6px;}
+  .note.pl{border-left-color:var(--plum);background:var(--plum-wash);}
+  .note.pl .lab{color:var(--plum);}
+
+  footer{padding:56px 0 70px;}
+  footer .sig{font-family:var(--disp);font-weight:800;font-size:1.6rem;}
+  footer p{color:var(--ink-soft);font-size:.9rem;margin-top:8px;max-width:64ch;}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="inner">
+    <span class="brand">Cardô.</span>
+    <a href="#i">O anúncio</a>
+    <a href="#ii">A mecânica</a>
+    <a href="#iii">Referências</a>
+    <a href="#iv">O que é ruim</a>
+    <a href="#v">Vídeo</a>
+    <a href="#vi">Captação</a>
+    <a href="#vii">Execução</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Guia + plano de execução · Cardô Marketing</span>
+    <h1 class="disp">Anúncio de imóvel<span class="l2">que funciona.</span></h1>
+    <p class="thesis">Este documento existe para uma coisa: <b>alinhar o que é um bom anúncio de imóvel antes de gastar o primeiro real de mídia.</b> Ele parte de anúncios reais que já rodaram no mercado — do apartamento de R$ 220 mil à cobertura duplex no Leblon — mostra o que faz cada um funcionar, o que faz outros queimarem verba, e termina no que precisamos de vocês para produzir os nossos.</p>
+    <div class="glance">
+      <div class="g"><div class="k">Referências</div><div class="n pl">19</div><div class="d">anúncios reais analisados</div></div>
+      <div class="g"><div class="k">Segmentos</div><div class="n">3</div><div class="d">econômico · médio · alto</div></div>
+      <div class="g"><div class="k">Formatos de vídeo</div><div class="n">8</div><div class="d">cada um com uma função</div></div>
+      <div class="g"><div class="k">A mecânica</div><div class="n">1</div><div class="d">só muda a variável do meio</div></div>
+    </div>
+  </div>
+</header>
+
+<section id="i">
+  <div class="wrap reveal">
+    <div class="shead">
+      <div class="rn">I</div>
+      <h2 class="disp">Primeiro: o anúncio não vende o imóvel.</h2>
+      <p>Essa é a única ideia que precisa ficar de pé antes de todas as outras. <b>Ninguém compra um apartamento pelo celular por impulso.</b> O que o anúncio faz é outra coisa — e entender isso muda tudo o que vamos medir depois.</p>
+    </div>
+
+    <p class="body">Um imóvel é a maior compra da vida da maioria das pessoas. Entre ver um anúncio e assinar passam-se <b>de 30 a 120 dias</b>, algumas visitas, uma conversa com o banco e normalmente uma segunda pessoa da família que precisa concordar. Nenhum anúncio no mundo encurta isso.</p>
+
+    <p class="body">O que o anúncio faz é <b>produzir conversa qualificada com um corretor</b>. Ele é o começo da esteira, não o fim. E é por isso que a régua de sucesso não pode ser curtida, alcance ou comentário — três números que não pagam comissão.</p>
+
+    <div class="callouts">
+      <div class="call warn">
+        <span class="tag">A régua errada</span>
+        <p>"O post teve <b>4 mil visualizações</b> e 80 curtidas." Isso não diz nada. Alcance é o que a plataforma entregou, não o que a pessoa sentiu. Post com muita curtida e zero conversa é <b>custo, não resultado</b>.</p>
+      </div>
+      <div class="call good">
+        <span class="tag">A régua certa</span>
+        <p>Quantos <b>leads</b> chegaram, quantos o corretor <b>conseguiu falar</b>, quantos viraram <b>visita</b>, quantas viraram <b>proposta</b>. Quatro números. É essa esteira que vamos acompanhar toda semana.</p>
+      </div>
+    </div>
+
+    <div class="steps" style="margin-top:34px">
+      <div class="step"><span class="ghost">1</span><div class="sq" style="background:#2563EB">1</div><div><h4>Impulsionar post não é campanha</h4><p>O botão "impulsionar" do Instagram entrega o post para quem tem mais chance de <b>reagir</b> a ele — curtir, comentar. A campanha montada no gerenciador entrega para quem tem mais chance de <b>fazer o que você pediu</b>: preencher um formulário, chamar no WhatsApp. É o mesmo dinheiro comprando duas coisas diferentes, e uma delas não gera cliente.</p></div></div>
+      <div class="step"><span class="ghost">2</span><div class="sq" style="background:#7A1FA2">2</div><div><h4>Lead que não fecha no mês é normal — e caro de jogar fora</h4><p>Quem preenche o formulário hoje raramente compra este mês. Isso <b>não</b> quer dizer que o lead é ruim: quer dizer que o ciclo é longo. Imobiliária que descarta contato que "não fechou em uma semana" está pagando para gerar cliente e entregando ele de graça para o concorrente que ligou de novo três meses depois.</p></div></div>
+      <div class="step"><span class="ghost">3</span><div class="sq" style="background:#DB2777">3</div><div><h4>Velocidade de atendimento vale mais que criativo</h4><p>É onde imobiliária mais perde dinheiro, e não custa mídia nenhuma. Um lead respondido em <b>5 minutos</b> conversa; o mesmo lead respondido no dia seguinte já falou com outros três corretores. Podemos fazer o melhor anúncio deste documento inteiro — se o retorno demora seis horas, o resultado vai parecer que o anúncio é ruim.</p></div></div>
+    </div>
+
+    <div class="note">
+      <span class="lab">Por que isso vem antes das referências</span>
+      Se a régua for "curtida", os anúncios bonitos e vazios das próximas páginas vão parecer os melhores — eles ganham em engajamento. Os que realmente funcionam são um pouco "duros" de propósito: <b>têm preço, metragem e endereço na cara</b>, o que afasta muita gente. Afastar gente é o objetivo.
+    </div>
+  </div>
+</section>
+
+<section id="ii">
+  <div class="wrap reveal">
+    <div class="shead">
+      <div class="rn">II</div>
+      <h2 class="disp">A mecânica é sempre a mesma. Só muda a variável do meio.</h2>
+      <p>Olhando os 19 anúncios lado a lado, do apartamento de R$ 220 mil à cobertura duplex no Leblon, aparece a mesma estrutura de três camadas. <b>O que separa o segmento econômico do alto padrão não é a mecânica — é qual informação ocupa o centro da peça.</b></p>
+    </div>
+
+    <div class="anat">
+      <h4 class="disp">As três camadas de um anúncio que gera conversa</h4>
+      <ol>
+        <li><b>Informação concreta que qualifica — e desqualifica.</b> Um número, uma metragem, um endereço. Serve para a pessoa certa se reconhecer e a errada seguir a vida. Anúncio que não desqualifica ninguém gera lead que não compra nada.
+          <span class="ex">"R$ 220 MIL (entrada de apenas 20%)" · "27 a 41m² com terraço" · "apenas 12 unidades"</span></li>
+        <li><b>Imagem que gera desejo.</b> Não é foto bonita por vaidade: é a imagem que faz a pessoa se imaginar morando ali. Perspectiva 3D bem feita, varanda com vista, área de lazer em uso — não fachada vazia vista da calçada.
+          <span class="ex">A peça do Nirvana abre com a praia vista de cima, antes de mostrar qualquer apartamento.</span></li>
+        <li><b>Clareza visual.</b> Uma informação principal legível em <b>menos de 2 segundos</b>, o resto embaixo em ordem. O feed é rolado com o polegar; se precisa parar para entender, já passou.
+          <span class="ex">Os três slides de insight das suas próprias pastas dizem a mesma coisa: "design clean e bem organizado, fora da média".</span></li>
+      </ol>
+    </div>
+
+    <p class="body" style="margin-top:34px">A quarta camada é a que muda por segmento — e é onde a maioria erra, usando o argumento de um segmento no público de outro:</p>
+
+    <div class="tscroll">
+    <table class="t">
+      <thead><tr><th>Segmento</th><th>O que vai no centro da peça</th><th>Como soa na prática</th><th>O que não funciona aqui</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="seg">Econômico</td>
+          <td><b>Preço e viabilidade.</b> A dúvida real não é se o imóvel é bom — é se cabe no bolso e se o financiamento sai.</td>
+          <td>"Parcelas a partir de R$ 500" · "entrada a partir de R$ 1.000" · "ITBI + registro grátis"</td>
+          <td>Sofisticação e conceito. Peça elegante sem preço gera lead que não passa na aprovação.</td>
+        </tr>
+        <tr>
+          <td class="seg">Médio</td>
+          <td><b>Localização e atributo diferenciador.</b> Já cabe no bolso; a disputa é contra outros três imóveis parecidos.</td>
+          <td>"6 min a pé do metrô Moema" · "bicicletário no mesmo andar do apartamento" · "ideal para morar ou investir"</td>
+          <td>Falar só de preço. Puxa o público para baixo e atrai quem não fecha nesse ticket.</td>
+        </tr>
+        <tr>
+          <td class="seg">Alto padrão</td>
+          <td><b>Exclusividade e endereço.</b> Preço não é a objeção — a objeção é "por que este e não outro".</td>
+          <td>"Apenas 12 unidades" · "na primeira quadra de Icaraí" · "no melhor do Leblon"</td>
+          <td>Preço grande e selo de desconto. Lê como saldão e queima o produto.</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="note">
+      <span class="lab">A regra de bolso</span>
+      Quanto <b>mais caro</b> o imóvel, <b>menos número</b> na peça e mais endereço e escassez. Quanto <b>mais barato</b>, <b>mais número</b> — parcela, entrada, custo de cartório. É contra-intuitivo, e é o erro mais comum do mercado.
+    </div>
+  </div>
+</section>
+
+<section id="iii">
+  <div class="wrap reveal">
+    <div class="shead">
+      <div class="rn">III</div>
+      <h2 class="disp">Referências: o que faz cada uma funcionar.</h2>
+      <p>Anúncios reais, de imobiliárias e incorporadoras que investem pesado em mídia. Não é para copiar layout — é para ver <b>a decisão por trás de cada peça</b>. Em cada uma, o que está escrito é mais importante do que como está desenhado.</p>
+    </div>
+
+    <div class="refs">
+      <div class="ref big">
+        <div class="inner">
+          <div class="shot"><img src="ref/popular-02.jpg" alt="Anúncio apto-On, apartamentos prontos para morar, R$ 220 mil"></div>
+          <div class="body">
+            <span class="verd ok">A referência mais completa do conjunto</span>
+            <h4 class="disp">apto-On · Chácara Sto. Antônio, SP — econômico</h4>
+            <p>Se este documento pudesse ter <b>um</b> exemplo só, seria este. Ele responde, em dois segundos, todas as perguntas que a pessoa faria ao corretor no primeiro contato:</p>
+            <ul>
+              <li><b>Quanto custa</b> — "R$ 220 MIL" em pastilha destacada, com a entrada logo abaixo: "entrada de apenas 20%".</li>
+              <li><b>Está pronto?</b> — "Apartamentos prontos para morar" é o próprio título. Elimina a maior objeção do econômico, que é comprar na planta e esperar três anos.</li>
+              <li><b>Onde fica</b> — não diz só o bairro. Diz <b>"600m da Estação de Trem João Dias"</b> e <b>"5 minutos do Shopping Morumbi"</b>. Referência que a pessoa usa, não coordenada que ela não conhece.</li>
+              <li><b>O que tem</b> — 4 atributos com ícone, um por linha: dormitório, transporte, shopping, lazer. Escaneável sem ler.</li>
+            </ul>
+            <p>Repare no que <b>não</b> tem: nenhum adjetivo. Não há "excelente oportunidade", "imperdível" nem "o melhor da região". Todas as palavras da peça são verificáveis. É exatamente isso que faz o lead chegar já sabendo o que vai visitar.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ref">
+        <div class="shot"><img src="ref/mercado-lancamento.png" alt="Anúncio Velatto, apartamentos com parcelas a partir de R$ 500"></div>
+        <div class="body">
+          <span class="verd ok">Funciona</span>
+          <h4 class="disp">Velatto / Vitta · Londrina</h4>
+          <p>Um único número ocupa metade da peça: <b>"partir de R$ 500"</b>. É a tradução do imóvel para a moeda que o público entende — parcela mensal, não valor total. "Lançamento em Londrina" faz o recorte geográfico, e o botão <b>"Descubra mais"</b> é o CTA nativo do anúncio, clicável.</p>
+          <p>A variação da mesma campanha troca a parcela por localização: <b>"More próximo aos principais pontos de lazer da cidade — a poucos minutos do aeroporto e do Shopping Boulevard"</b>, com "ITBI + registro grátis" e "última torre disponível". Mesmo empreendimento, dois argumentos diferentes, para descobrir qual puxa mais lead.</p>
+        </div>
+      </div>
+
+      <div class="ref">
+        <div class="shot"><img src="ref/popular-01.jpg" alt="Anúncio de imóvel popular, programa Casa Verde e Amarela"></div>
+        <div class="body">
+          <span class="verd ok">Funciona</span>
+          <h4 class="disp">apto On · Sabará, SP — econômico</h4>
+          <p><b>"Mensais a partir de R$ 1.500,00"</b> com o selo do programa habitacional ao lado. O programa não é enfeite: é o que diz para a pessoa <b>"você tem chance de ser aprovada"</b>, que é a objeção real de quem compra o primeiro imóvel.</p>
+          <p>Depois disso, os atributos: 2 quartos, terraço gourmet, garagem, fitness, coworking, área de lazer. Nessa ordem — primeiro a viabilidade, depois o desejo.</p>
+        </div>
+      </div>
+
+      <div class="ref">
+        <div class="shot"><img src="ref/medio-01.jpg" alt="Anúncio de apartamento em Moema, 27 a 41m²"></div>
+        <div class="body">
+          <span class="verd ok">Funciona</span>
+          <h4 class="disp">Moema, SP — médio padrão</h4>
+          <p>Aqui o preço <b>some da peça</b> — e é proposital. No médio padrão, quem lê já sabe a faixa do bairro; o que decide é outra coisa. O centro da peça vira o par <b>metragem + localização</b>: "27 a 41m² com terraço" e <b>"6 min. a pé do metrô Moema"</b>.</p>
+          <p>E aparece o detalhe que ninguém mais fala: <b>"bicicletário no mesmo andar do apartamento"</b>. É um atributo pequeno, específico e impossível de confundir com o concorrente. Um diferencial estranho e concreto vale mais que dez genéricos.</p>
+          <p>A frase <b>"ideal para morar ou investir"</b> abre a peça para dois públicos diferentes com o mesmo criativo — comprador final e investidor.</p>
+        </div>
+      </div>
+
+      <div class="ref big">
+        <div class="inner">
+          <div class="shot"><img src="ref/alto-06.jpg" alt="Anúncio Sunset Icaraí, more na primeira quadra da praia de Icaraí"></div>
+          <div class="body">
+            <span class="verd ok">A referência de alto padrão</span>
+            <h4 class="disp">Sunset Icaraí · Niterói — alto padrão</h4>
+            <p>Compare com o apto-On e veja a inversão completa. Aqui <b>não existe preço na peça</b>. O que ocupa o espaço todo é o endereço, escrito como promessa: <b>"MORE NA PRIMEIRA QUADRA DA PRAIA DE ICARAÍ"</b>. Não é "próximo à praia" — é <i>primeira quadra</i>, que é uma posição que ou você tem ou não tem.</p>
+            <p>Abaixo, quatro dados em uma linha só: <b>3 quartos com suíte · varanda gourmet de 18,53m² · 18 espaços de lazer · financiamento de até 90%</b>. O "18,53m²" com as casas decimais é o detalhe que passa credibilidade — é medida de projeto, não estimativa de anúncio.</p>
+            <p>O financiamento aparece <b>por último e pequeno</b>. No econômico, condição de pagamento é o título; aqui é nota de rodapé. Mesma informação, hierarquia oposta.</p>
+            <p>E o CTA está escrito na peça: <b>"Clique abaixo e fale com nossos corretores"</b> — instrução direta, sem "consulte-nos".</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ref">
+        <div class="shot"><img src="ref/alto-04.jpg" alt="Anúncio Urquiza, apartamentos e cobertura duplex no melhor do Leblon"></div>
+        <div class="body">
+          <span class="verd ok">Funciona</span>
+          <h4 class="disp">Urquiza · Leblon, RJ — alto padrão</h4>
+          <p>Escassez explícita, atravessando a peça: <b>"EXCLUSIVIDADE: EMPREENDIMENTO COM APENAS 12 UNIDADES"</b>. Doze. O número pequeno é o produto — é ele que justifica o ticket e cria pressa em quem pode pagar.</p>
+          <p>E o endereço completo no rodapé: <b>"Rua Prof. Arthur Ramos 75, esquina com Rua General Urquiza"</b>. No alto padrão, dar a esquina exata não é excesso de informação: é o que separa quem conhece a região de quem só está passeando.</p>
+        </div>
+      </div>
+
+      <div class="ref">
+        <div class="shot"><img src="ref/alto-03.jpg" alt="Anúncio Sunset Icaraí, nada se compara"></div>
+        <div class="body">
+          <span class="verd ok">Funciona com ressalva</span>
+          <h4 class="disp">Sunset Icaraí · variação "Nada se compara"</h4>
+          <p>Mesma campanha da referência acima, com abertura mais conceitual: <b>"Nada se compara… apartamentos de alto padrão na primeira quadra de Icaraí"</b>, e a foto ocupando quase tudo.</p>
+          <p>Funciona <b>porque não vem sozinha</b>. Peça conceitual é ótima para apresentar e alimentar remarketing, mas se for a única do conjunto o lead chega sem saber metragem nem faixa de preço — e o corretor gasta a primeira ligação explicando o que a peça deveria ter dito.</p>
+        </div>
+      </div>
+
+      <div class="ref">
+        <div class="shot"><img src="ref/alto-01.jpg" alt="Anúncio Nirvana Praia Boutique, Piratininga"></div>
+        <div class="body">
+          <span class="verd ok">Funciona como topo de funil</span>
+          <h4 class="disp">Nirvana Praia Boutique · Piratininga</h4>
+          <p>Abre com a <b>praia vista de cima</b> e uma pessoa correndo na areia — vende o lugar antes do imóvel. Só depois entra a perspectiva da varanda com piscina, e a informação: "Terrazzas, coberturas e apartamentos com 4, 3 e 2 quartos".</p>
+          <p>Esse é o papel legítimo da peça bonita: <b>parar o dedo e apresentar</b>. Ela abre a campanha; quem interage recebe depois a peça com metragem, planta e condição. Uma prepara a outra.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="note pl">
+      <span class="lab">O padrão que atravessa as três faixas</span>
+      Todas as referências boas têm <b>uma informação que a concorrência não conseguiria copiar</b> — 600m da estação, bicicletário no mesmo andar, apenas 12 unidades, primeira quadra, 18,53m² de varanda. Anúncio que só tem adjetivo ("ótima localização", "alto padrão", "excelente oportunidade") é intercambiável: serve para qualquer imóvel de qualquer imobiliária, e por isso não convence de nenhum.
+    </div>
+  </div>
+</section>
+
+<section id="iv">
+  <div class="wrap reveal">
+    <div class="shead">
+      <div class="rn">IV</div>
+      <h2 class="disp">E agora o que é ruim.</h2>
+      <p>Estes dois são reais e estavam na mesma pasta dos bons. Não são anúncios "feios" — são anúncios que <b>gastam mídia sem dar ao comprador nenhum motivo para agir</b>. Vale olhar com calma, porque são os erros mais fáceis de cometer sem perceber.</p>
+    </div>
+
+    <div class="vs">
+      <div class="ref">
+        <div class="shot"><img src="ref/avulso-01.png" alt="Anúncio de apartamento em Cabo Frio com texto sobre a foto"></div>
+        <div class="body">
+          <span class="verd no">Não funciona</span>
+          <h4 class="disp">Apartamento em Cabo Frio — o problema é a execução</h4>
+          <p>O conteúdo até está certo: tem <b>preço (R$ 490.000)</b>, tem <b>quantidade de quartos</b> e tem uma referência boa de localização — <b>"a 100 metros da Praia do Forte"</b>. Isso é mais do que muita imobiliária coloca.</p>
+          <p>O que derruba é tudo o mais:</p>
+          <ul>
+            <li><b>Texto branco direto sobre foto clara.</b> Some. No celular, sob sol, não se lê.</li>
+            <li><b>Foto de fachada tirada da calçada</b>, tortas as linhas, com fiação e carro na frente. Ninguém se imagina morando ali — mostra o prédio, não a vida.</li>
+            <li><b>Preço e chamada disputando o mesmo espaço</b>, sem hierarquia: os dois em branco, mesmo peso, colados no rodapé.</li>
+            <li><b>Nenhuma marca e nenhum CTA.</b> A pessoa não sabe de quem é o anúncio nem o que fazer.</li>
+          </ul>
+          <p>É o caso mais frustrante de todos: <b>a informação certa jogada fora por causa da embalagem</b>. Mesma foto, tratada, com faixa escura sob o texto e o preço destacado, já viraria uma peça aceitável.</p>
+        </div>
+      </div>
+
+      <div class="ref">
+        <div class="shot"><img src="ref/avulso-02.jpg" alt="Anúncio Aconchego, obras iniciadas, 70% das unidades vendidas"></div>
+        <div class="body">
+          <span class="verd no">Não funciona</span>
+          <h4 class="disp">"Obras iniciadas" — o problema é a mensagem</h4>
+          <p>Este é bem produzido: layout organizado, perspectiva 3D limpa, marca visível. E ainda assim é o mais fraco do conjunto — porque comunica <b>as notícias da incorporadora, não as do comprador</b>.</p>
+          <ul>
+            <li><b>"OBRAS INICIADAS"</b> é o título. Para quem está comprando, isso é neutro ou até negativo — significa que ainda vai demorar.</li>
+            <li><b>"+ DE 70% DAS UNIDADES VENDIDAS"</b> tenta criar urgência, mas para quem chega agora lê como "sobrou o que ninguém quis". Escassez só funciona quando o produto já é desejado; aqui ela vem antes de qualquer motivo para desejar.</li>
+            <li><b>Não diz preço, nem metragem, nem quantos quartos, nem em que cidade fica.</b> Nada que qualifique.</li>
+            <li><b>Telefone escrito dentro da imagem.</b> Ninguém decora número de anúncio. O contato tem que ser um botão — o clique é o que a plataforma consegue medir e otimizar; o telefone impresso não gera nada.</li>
+          </ul>
+          <p>Um anúncio pode ser bonito, caro de produzir e mesmo assim não pedir nada e não informar nada.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="errs">
+      <div class="err"><div class="x">×</div><div><h4>Anúncio sem preço nem faixa</h4><p>O medo é "assustar o cliente". O que acontece na prática é o contrário: sem preço, todo mundo clica — inclusive quem nunca poderia comprar — e o corretor gasta o dia inteiro descobrindo por telefone quem tinha condição.<span class="fix"><b>Certo:</b> preço cheio, "a partir de", parcela ou entrada. Qualquer um serve. Silêncio é o que não serve.</span></div></div>
+      <div class="err"><div class="x">×</div><div><h4>Localização em nome de bairro só</h4><p>"Apartamento no Centro" não diz nada para quem não é da região. As referências boas nunca fazem isso: usam <b>tempo e ponto conhecido</b> — 6 minutos a pé do metrô, 600m da estação, 5 minutos do shopping.<span class="fix"><b>Certo:</b> "a X minutos de [lugar que a pessoa conhece]". Distância se mede em minutos, não em metros.</span></div></div>
+      <div class="err"><div class="x">×</div><div><h4>Carrossel com dez imóveis diferentes</h4><p>Vira catálogo. Cada imóvel fala com um público, com uma faixa de preço e uma objeção diferente — juntando tudo, a plataforma não aprende com quem falar e nenhum dos dez é bem apresentado.<span class="fix"><b>Certo:</b> um imóvel por anúncio; o carrossel serve para mostrar cômodos <b>do mesmo</b> imóvel.</span></div></div>
+      <div class="err"><div class="x">×</div><div><h4>"Agende sua visita" / "Consulte-nos" como única mensagem</h4><p>É um pedido sem oferta. A pessoa não vai agendar visita para um imóvel do qual não sabe o preço, o tamanho nem onde fica.<span class="fix"><b>Certo:</b> a informação primeiro, o pedido depois. "3 quartos, 92m², 5 min do centro, a partir de R$ 480 mil — fale com um corretor."</span></div></div>
+      <div class="err"><div class="x">×</div><div><h4>Foto do imóvel vazio, sem tratamento, na hora errada</h4><p>Imóvel sem móvel e mal iluminado parece menor e mais velho do que é. É o motivo nº 1 de um imóvel bom performar mal — não é o anúncio que está errado, é a matéria-prima.<span class="fix"><b>Certo:</b> luz do fim da tarde, luzes internas acesas, cortina aberta, foto na horizontal do canto do cômodo. Sem móvel, vale ambientar as duas ou três fotos principais.</span></div></div>
+      <div class="err"><div class="x">×</div><div><h4>Anunciar imóvel que já foi vendido ou não tem exclusividade</h4><p>Queima verba e queima o corretor: o lead chega quente perguntando de um imóvel que não existe mais. E, sem exclusividade, você paga a mídia para um lead que fecha com outra imobiliária.<span class="fix"><b>Certo:</b> só entram na mídia imóveis com <b>exclusividade e disponibilidade confirmada na semana</b>.</span></div></div>
+      <div class="err"><div class="x">×</div><div><h4>Trocar o criativo toda semana porque "cansou"</h4><p>Quem cansou do anúncio foi a equipe, que o vê dez vezes por dia — não o público, que o viu uma. Trocar cedo demais impede a campanha de sair do aprendizado e joga fora o histórico que faz o custo por lead cair.<span class="fix"><b>Certo:</b> criativo só sai quando o número mostra queda, não quando o time enjoa.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="v">
+  <div class="wrap reveal">
+    <div class="shead">
+      <div class="rn">V</div>
+      <h2 class="disp">Vídeo: oito formatos, oito funções.</h2>
+      <p>A pasta de referência já está organizada exatamente do jeito certo — cada vídeo nomeado pela <b>função</b>, não pelo imóvel. É assim que se monta biblioteca de criativo: o mesmo imóvel rende seis vídeos diferentes se cada um resolver uma objeção diferente.</p>
+    </div>
+
+    <div class="tscroll">
+    <table class="t">
+      <thead><tr><th>Formato</th><th>Serve para</th><th>Onde entra</th><th>Por que funciona</th></tr></thead>
+      <tbody>
+        <tr><td class="seg">Humanizado<br><span style="font-weight:400;font-size:.82rem;color:var(--ink-soft)">corretor fala com a câmera</span></td><td>Gerar confiança e dar rosto à imobiliária</td><td>Topo — público frio</td><td>Pessoa falando segura o dedo mais que imagem parada. E o lead já chega sabendo com quem vai falar.</td></tr>
+        <tr><td class="seg">Animação 3D<br><span style="font-weight:400;font-size:.82rem;color:var(--ink-soft)">atributos e áreas de lazer</span></td><td>Mostrar o produto que ainda não existe</td><td>Meio — quem já demonstrou interesse</td><td>Em lançamento é a única forma de mostrar o imóvel pronto. Vende a planta.</td></tr>
+        <tr><td class="seg">Humanizado + animação<br><span style="font-weight:400;font-size:.82rem;color:var(--ink-soft)">intercalado</span></td><td>Confiança e produto no mesmo vídeo</td><td>Topo e meio</td><td>Costuma ser o formato mais forte do conjunto: o rosto prende, a animação convence.</td></tr>
+        <tr><td class="seg">Tour com legenda por cômodo</td><td>Passear pelo imóvel sem depender de áudio</td><td>Meio e remarketing</td><td>A maioria assiste sem som. Legenda por cômodo entrega a informação mesmo mudo.</td></tr>
+        <tr><td class="seg">Tour com drone</td><td>Mostrar entorno, vista e posição na cidade</td><td>Abertura de campanha</td><td>Resolve a pergunta de localização em três segundos, sem precisar escrever.</td></tr>
+        <tr><td class="seg">Tour com condição de pagamento</td><td>Quebrar a objeção de dinheiro</td><td>Fundo — quem já viu o imóvel</td><td>Última barreira antes da visita. É o vídeo que mais gera conversa no econômico.</td></tr>
+        <tr><td class="seg">Tour em 50s</td><td>Versão curta para Reels e Stories</td><td>Todo lugar</td><td>Formato vertical curto tem a mídia mais barata. Corte do tour longo, não gravação nova.</td></tr>
+        <tr><td class="seg">Corretor apresenta / time de corretores</td><td>Prova social e captação de novos imóveis</td><td>Topo e institucional</td><td>Mostra estrutura. Serve também para atrair <b>proprietário</b> querendo vender — a outra ponta do negócio.</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="callouts">
+      <div class="call good">
+        <span class="tag">A regra dos 3 segundos</span>
+        <p>O vídeo é decidido no <b>primeiro frame e nos 3 primeiros segundos</b>. Comece pela melhor imagem do imóvel ou por uma frase de impacto. Nunca comece com logo, vinheta ou "olá, tudo bem, meu nome é…" — nesse tempo a pessoa já rolou.</p>
+      </div>
+      <div class="call good">
+        <span class="tag">Vertical, sempre</span>
+        <p>Grave <b>em pé (9:16)</b>. Vídeo horizontal aparece pequeno no meio da tela do celular e perde para qualquer vídeo vertical do lado. Se só existir a versão horizontal, cortamos — mas nasce perdendo.</p>
+      </div>
+    </div>
+
+    <div class="note">
+      <span class="lab">O que isso significa na prática</span>
+      Um único imóvel bem captado vira <b>seis a oito anúncios</b>. Não precisamos de dez imóveis para ter campanha — precisamos de <b>dois ou três imóveis muito bem captados</b>. É mais barato, e a campanha aprende mais rápido quando testa ângulos do mesmo produto do que quando pula de imóvel em imóvel.
+    </div>
+  </div>
+</section>
+
+<section id="vi">
+  <div class="wrap reveal">
+    <div class="shead">
+      <div class="rn">VI</div>
+      <h2 class="disp">O que precisa existir de cada imóvel.</h2>
+      <p>Esta é a parte que depende de vocês, e é a que mais determina o resultado. <b>Não existe anúncio bom de imóvel mal captado.</b> Abaixo, o pacote mínimo — vale como checklist para o corretor levar na visita de captação.</p>
+    </div>
+
+    <div class="chk">
+      <div class="ck" style="--pc:#2563EB">
+        <div class="lab">Obrigatório · sem isso não anuncia</div>
+        <h4 class="disp">Os 4 dados</h4>
+        <ul>
+          <li><b>Preço</b> — cheio, "a partir de", parcela ou entrada</li>
+          <li><b>Metragem</b> e nº de quartos/suítes</li>
+          <li><b>Localização com referência</b> — "X min de [ponto conhecido]", não só o bairro</li>
+          <li><b>Condição de pagamento</b> — financiamento, entrada, aceita FGTS, permuta</li>
+        </ul>
+      </div>
+      <div class="ck" style="--pc:#7A1FA2">
+        <div class="lab">Obrigatório</div>
+        <h4 class="disp">Os 2 diferenciais</h4>
+        <ul>
+          <li>Dois atributos <b>específicos e verificáveis</b>, do tipo que o concorrente não tem</li>
+          <li>Exemplos reais das referências: <b>bicicletário no mesmo andar</b>, <b>varanda de 18,53m²</b>, <b>apenas 12 unidades</b>, <b>600m da estação</b></li>
+          <li>Não vale: "ótima localização", "excelente oportunidade", "alto padrão"</li>
+        </ul>
+      </div>
+      <div class="ck" style="--pc:#DB2777">
+        <div class="lab">Foto</div>
+        <h4 class="disp">8 a 12 imagens</h4>
+        <ul>
+          <li><b>1 externa</b> — fachada ou perspectiva, nunca da calçada com fio e carro</li>
+          <li><b>3 a 5 dos ambientes principais</b> — sala, cozinha, suíte, varanda</li>
+          <li><b>1 da vista</b>, se houver</li>
+          <li><b>2 do lazer</b> ou do entorno</li>
+          <li><b>Planta</b> — funciona muito bem em carrossel e é o que o público mais salva</li>
+          <li>Fim de tarde, luzes acesas, cortinas abertas</li>
+        </ul>
+      </div>
+      <div class="ck" style="--pc:#D97706">
+        <div class="lab">Vídeo</div>
+        <h4 class="disp">1 tour vertical de 40–60s</h4>
+        <ul>
+          <li><b>Em pé (9:16)</b>, celular estabilizado, andando devagar</li>
+          <li>Começa pelo <b>melhor cômodo</b>, não pela porta de entrada</li>
+          <li>Um take por ambiente, sem cortes rápidos</li>
+          <li>Se der: uma versão com <b>o corretor falando</b> e outra só do imóvel</li>
+        </ul>
+      </div>
+      <div class="ck" style="--pc:#1C8A54">
+        <div class="lab">Comercial</div>
+        <h4 class="disp">Status confirmado</h4>
+        <ul>
+          <li><b>Exclusividade</b> — sim ou não</li>
+          <li><b>Disponibilidade revalidada</b> toda semana</li>
+          <li>Quem é o <b>corretor responsável</b> pelos leads daquele imóvel</li>
+          <li>Se sair da carteira, <b>avisar no mesmo dia</b> para pausar a campanha</li>
+        </ul>
+      </div>
+      <div class="ck" style="--pc:#0891B2">
+        <div class="lab">Para lançamento</div>
+        <h4 class="disp">Material da construtora</h4>
+        <ul>
+          <li><b>Perspectivas 3D</b> em alta e vídeo/animação, se houver</li>
+          <li><b>Tabela de preços</b> e condições vigentes</li>
+          <li>O que <b>pode e não pode</b> ser divulgado (regra da incorporadora)</li>
+          <li>Prazo de entrega e estágio da obra</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note">
+      <span class="lab">Ordem de prioridade, se faltar tempo</span>
+      Se der para captar <b>uma coisa só</b>, que seja o <b>vídeo vertical do imóvel</b>. Se der para duas, vídeo + os 4 dados escritos. Foto profissional é importante, mas um tour de celular bem gravado bate uma foto profissional isolada.
+    </div>
+  </div>
+</section>
+
+<section id="vii">
+  <div class="wrap reveal">
+    <div class="shead">
+      <div class="rn">VII</div>
+      <h2 class="disp">Como vamos rodar.</h2>
+      <p>Vocês trabalham com três frentes — <b>lançamento de construtora</b>, <b>carteira própria</b> e <b>alto padrão</b>. São públicos, argumentos e ciclos diferentes, e por isso não podem dividir a mesma campanha: se rodarem juntas, a plataforma otimiza para a que gera lead mais barato, que quase sempre é a errada.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step"><span class="ghost">A</span><div class="sq" style="background:#2563EB">A</div><div><h4>Lançamento de construtora</h4><p>Verba concentrada e prazo curto — lançamento tem janela. Campanha de <b>geração de lead</b> com formulário, criativos puxando <b>condição de pagamento</b> (parcela, entrada, ITBI/registro) e <b>estágio da obra</b>. Vídeo de animação 3D e humanizado intercalado como criativo principal. É a frente que mais gera volume, e a que mais exige velocidade de atendimento — em lançamento o lead compara três empreendimentos na mesma tarde.</p></div></div>
+      <div class="step"><span class="ghost">B</span><div class="sq" style="background:#7A1FA2">B</div><div><h4>Carteira própria (avulso)</h4><p>Verba distribuída e contínua. Aqui a regra é <b>um imóvel por anúncio</b>, com os 4 dados na peça, rodando só os imóveis com exclusividade. O objetivo não é gerar o lead mais barato — é gerar o lead <b>do imóvel certo</b>. Roda também a ponta de <b>captação</b>: anúncio falando com o proprietário que quer vender, usando os vídeos de "corretor apresenta" e "time de corretores". Sem estoque, a frente de venda seca.</p></div></div>
+      <div class="step"><span class="ghost">C</span><div class="sq" style="background:#D97706">C</div><div><h4>Alto padrão</h4><p>Verba menor, lead mais caro e <b>menos leads de propósito</b>. Aqui um lead custa várias vezes o do econômico e isso está certo — o que importa é a qualidade, não o volume. Criativo conceitual para abrir (vista, endereço, exclusividade), peça com metragem e diferencial para quem interagiu. Nunca preço grande na peça. Público montado por <b>região e comportamento</b>, não por faixa de renda declarada.</p></div></div>
+      <div class="step"><span class="ghost">D</span><div class="sq" style="background:#DB2777">D</div><div><h4>Remarketing — atravessa as três</h4><p>É a frente mais barata e a que ninguém faz. Quem assistiu 50% do vídeo, quem visitou o site, quem abriu o formulário e não terminou: essas pessoas <b>já demonstraram interesse</b> e custam uma fração para impactar de novo. Como o ciclo do imóvel é longo, é o remarketing que recupera o lead de março que só vai decidir em junho.</p></div></div>
+    </div>
+
+    <div class="tscroll">
+    <table class="t">
+      <thead><tr><th>O que acompanhamos toda semana</th><th>O que o número quer dizer</th><th>De quem é a responsabilidade</th></tr></thead>
+      <tbody>
+        <tr><td class="seg">Leads gerados</td><td>Volume que a mídia entregou</td><td>Cardô</td></tr>
+        <tr><td class="seg">Custo por lead</td><td>Eficiência do criativo e do público</td><td>Cardô</td></tr>
+        <tr><td class="seg">% de leads contatados</td><td>Se a esteira comercial está absorvendo o que chega</td><td>Imobiliária</td></tr>
+        <tr><td class="seg">Tempo até o 1º contato</td><td>O número que mais mexe na conversão inteira</td><td>Imobiliária</td></tr>
+        <tr><td class="seg">Visitas agendadas</td><td>Se o lead está chegando qualificado</td><td>Compartilhada</td></tr>
+        <tr><td class="seg">Propostas / vendas</td><td>O único resultado que importa de fato</td><td>Compartilhada</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="note pl">
+      <span class="lab">O combinado que faz isso funcionar</span>
+      Nós entregamos volume e qualidade de lead. <b>O que acontece do lead em diante é de vocês</b> — e sem os dois números do meio da tabela (% contatado e tempo até o primeiro contato) não é possível saber se um resultado ruim veio da mídia ou do atendimento. Esses dois campos precisam ser preenchidos, nem que seja numa planilha simples.
+    </div>
+  </div>
+</section>
+
+<section id="viii">
+  <div class="wrap reveal">
+    <div class="shead">
+      <div class="rn">VIII</div>
+      <h2 class="disp">O que precisamos definir juntos.</h2>
+      <p>Este documento cobre o critério. Para virar cronograma e distribuição de verba, faltam cinco definições — todas de vocês.</p>
+    </div>
+
+    <div class="chk">
+      <div class="ck" style="--pc:#7A1FA2"><div class="lab">01</div><h4 class="disp">Divisão da verba</h4><ul><li>Quanto vai para <b>lançamento</b>, <b>carteira</b> e <b>alto padrão</b> por mês</li><li>Se alguma frente é prioridade agora</li></ul></div>
+      <div class="ck" style="--pc:#7A1FA2"><div class="lab">02</div><h4 class="disp">Os primeiros imóveis</h4><ul><li><b>2 ou 3 imóveis</b> por frente para começar</li><li>Com exclusividade e material completo</li></ul></div>
+      <div class="ck" style="--pc:#7A1FA2"><div class="lab">03</div><h4 class="disp">Região de atuação</h4><ul><li>Cidades e bairros onde os imóveis ficam</li><li>Se atende comprador de fora da cidade</li></ul></div>
+      <div class="ck" style="--pc:#7A1FA2"><div class="lab">04</div><h4 class="disp">Onde o lead cai</h4><ul><li>WhatsApp, CRM ou planilha</li><li><b>Quem</b> atende e em quanto tempo</li></ul></div>
+      <div class="ck" style="--pc:#7A1FA2"><div class="lab">05</div><h4 class="disp">O que já foi feito</h4><ul><li>Se já houve campanha antes e o que aconteceu</li><li>Acesso à conta de anúncios e à página</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="sig disp">Cardô.</div>
+    <p>Documento de alinhamento e plano de execução. As referências analisadas são anúncios reais de mercado, usadas aqui como material de estudo.</p>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((es) => {
+    es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
